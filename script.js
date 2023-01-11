@@ -1,44 +1,53 @@
-var computerScore = 0;
-var playerScore = 0;
-var round = 1;
+<script>
+        let round = 1;
+        let playerScore = 0;
+        let computerScore = 0;
 
-function play(playerChoice) {
-  var computerChoice = getComputerChoice();
-  var result = getResult(playerChoice, computerChoice);
+        const play = (playerChoice) => {
+            let computerChoice = Math.floor(Math.random() * 5) + 1;
 
-  document.getElementById("result").innerHTML = "Round " + round + ": You chose " + playerChoice + ", the computer chose " + computerChoice + ". " + result + " <br> Your Score: " + playerScore + " Computer Score: " + computerScore;
-  round++;
-  if(round>5){
-      if(computerScore>playerScore){
-          document.getElementById("result").innerHTML += "<br> Computer wins the game!"
-      } else if (computerScore<playerScore) {
-          document.getElementById("result").innerHTML += "<br> You win the game!"
-      } else {
-          document.getElementById("result").innerHTML += "<br> It's a tie!"
-      }
-  }
-}
+            switch (computerChoice) {
+                case 1:
+                    computerChoice = "rock";
+                    break;
+                case 2:
+                    computerChoice = "paper";
+                    break;
+                case 3:
+                    computerChoice = "scissors";
+                    break;
+                case 4:
+                    computerChoice = "lizard";
+                    break;
+                case 5:
+                    computerChoice = "spock";
+                    break;
+            }
 
-function getComputerChoice() {
-  var choices = ["rock", "paper", "scissors", "lizard", "spock"];
-  var randomIndex = Math.floor(Math.random() * 5);
-  return choices[randomIndex];
-}
+            if (playerChoice === computerChoice) {
+                document.getElementById("result").innerHTML = `It's a tie! You both picked ${computerChoice}.`;
+                return;
+            }
 
-function getResult(playerChoice, computerChoice) {
-  if (playerChoice === computerChoice) {
-    return "It's a tie!";
-  } else if (
-    (playerChoice === "rock" && (computerChoice === "scissors" || computerChoice === "lizard")) ||
-    (playerChoice === "paper" && (computerChoice === "rock" || computerChoice === "spock")) ||
-    (playerChoice === "scissors" && (computerChoice === "paper" || computerChoice === "lizard")) ||
-    (playerChoice === "lizard" && (computerChoice === "spock" || computerChoice === "paper")) ||
-    (playerChoice === "spock" && (computerChoice === "scissors" || computerChoice === "rock"))
-  ) {
-    playerScore++;
-    return "You win!";
-  } else {
-    computerScore++;
-    return "Computer wins!";
-  }
-}
+            if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "rock" && computerChoice === "lizard") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "paper" && computerChoice === "spock") ||
+                (playerChoice === "scissors" && computerChoice === "paper") ||
+                (playerChoice === "scissors" && computerChoice === "lizard") ||
+                (playerChoice === "lizard" && computerChoice === "paper") ||
+                (playerChoice === "lizard" && computerChoice === "spock") ||
+                (playerChoice === "spock" && computerChoice === "scissors") ||
+                (playerChoice === "spock" && computerChoice === "rock")
+            ) {
+                playerScore++;
+                document.getElementById("result").innerHTML = `You win! ${playerChoice} beats ${computerChoice}.`;
+            } else {
+                computerScore++;
+                document.getElementById("result").innerHTML = `You lose! ${computerChoice} beats ${playerChoice}.`;
+            }
+            document.getElementById("round").innerHTML = `Round: ${round++}`;
+            document.getElementById("player-score").innerHTML = `Player Score: ${playerScore}`;
+            document.getElementById("computer-score").innerHTML = `Computer Score: ${computerScore}`;
+        }

@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Rock-Paper-Scissors-Lizard-Spock</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <h1>Rock-Paper-Scissors-Lizard-Spock</h1>
-    <div id="game-area">
-      <button id="rock" onclick="play('rock')">Rock</button>
-      <button id="paper" onclick="play('paper')">Paper</button>
-      <button id="scissors" onclick="play('scissors')">Scissors</button>
-      <button id="lizard" onclick="play('lizard')">Lizard</button>
-      <button id="spock" onclick="play('spock')">Spock</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Do you want to play a game?</title>
+</head>
+
+<body>
+    <h1>Rock, Paper, Scissors, Lizard or Spock?</h1>
+
+    <div class="info-holder">
+        <span id="timer"></span>
     </div>
+
+    <div id="rules">
+        <h3>Rules and how to play the game:</h3>
+        <p>Rock, Paper, Scissors, Lizard, Spock is a game of 
+        chance that expands the traditional game of Rock, Paper, Scissors.</p> 
+        <img id="main-image" src="assets/images/RockPaperScissorsLizardSpock.jpg">
+        <br>
+        <p>Scissors cuts Paper, Paper covers, Rock, Rock crushes Lizard,
+        Lizard poisons Spock, Spock smashes Scissors, <br> Scissors decapitates Lizard,
+        Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock,
+        (and as it always has) Rock crushes Scissors</p>
+    </div>
+
+    <div id="game-area">
+        <button id="rock" onclick="playRock(); play('rock')">Rock</button>
+        <button id="paper" onclick="playPaper(); play('paper')">Paper</button>
+        <button id="scissors" onclick="playScissors(); play('scissors')">Scissors</button>
+        <button id="lizard" onclick="playLizard(); play('lizard')">Lizard</button>
+        <button id="spock" onclick="playSpock(); play('spock')">Spock</button>
+    </div>
+
+    <audio id="rocksound" src="assets/audio/rock.wav"></audio>
+    <audio id="papersound" src="assets/audio/paper.wav"></audio>
+    <audio id="scissorssound" src="assets/audio/scissors.wav"></audio>
+    <audio id="lizardsound" src="assets/audio/lizzard.mp3"></audio>
+    <audio id="spocksound" src="assets/audio/laser.wav"></audio>
+
+    <div id="score-area">
+        <div id="round">Round: 1</div>
+        <div id="player-score">Player Score: 0</div>
+        <div id="computer-score">Computer Score: 0</div>
+    </div>
+    
     <div id="result"></div>
-    <script src="script.js"></script>
-  </body>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/audio.js"></script>
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
